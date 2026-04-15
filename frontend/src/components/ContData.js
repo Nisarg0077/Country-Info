@@ -7,8 +7,6 @@ export default function ContData() {
 
   const [country, setCountry] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   useEffect(() => {
     if (!code) return;
     const result = jsonData.country.filter((data) => {
@@ -29,10 +27,10 @@ export default function ContData() {
     );
   }
 
-  if (error || !country) {
+  if (!country) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center text-white">
-        <p className="text-xl text-red-400">{error || "Country not found"}</p>
+        <p className="text-xl text-red-400">{"Country not found"}</p>
       </div>
     );
   }

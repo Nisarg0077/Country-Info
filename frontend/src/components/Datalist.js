@@ -9,9 +9,9 @@ export default function Datalist() {
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const timerRef = useRef(null);
-  const constries = jsonData.country;
   // Fetch countries
   useEffect(() => {
+    const constries = jsonData.country;
     setData(constries);
     setFilteredData(constries); // Initialize filteredData with all data
     setLoading(false);
