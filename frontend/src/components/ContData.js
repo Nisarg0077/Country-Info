@@ -9,12 +9,7 @@ export default function ContData() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (!code) return;
-    const result = jsonData.country.filter((data) => {
-      if (code === data.Code) {
-        return data;
-      }
-    });
-
+    const result = jsonData.country.filter((data) => code === data.Code);
     setCountry(result[0] || result); // Handle both array and single object
     setLoading(false);
   }, [code]);
