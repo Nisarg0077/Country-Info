@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import jsonData from "../convert.json";
 
 export default function ContData() {
   const code = window.location.pathname.split("/").pop(); // Cleaner way to get country code
@@ -10,21 +11,14 @@ export default function ContData() {
 
   useEffect(() => {
     if (!code) return;
+    const result = jsonData.country.filter((data) => {
+      if (code === data.Code) {
+        return data;
+      }
+    });
 
-    fetch(`https://country-info-vm95.vercel.app/countries/${code}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Country not found");
-        return res.json();
-      })
-      .then((data) => {
-        setCountry(data[0] || data); // Handle both array and single object
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError("Failed to load country data");
-        setLoading(false);
-      });
+    setCountry(result[0] || result); // Handle both array and single object
+    setLoading(false);
   }, [code]);
 
   if (loading) {
@@ -92,7 +86,7 @@ export default function ContData() {
             <InfoRow label="GNP" value={`$${country.GNP?.toLocaleString()}`} />
             <InfoRow
               label="Old GNP"
-              value={`$${country.GNPOld?.toLocaleString()}`}
+              value={`${!country.GNPOld ? "-" : `$${country.GNPOld?.toLocaleString()}`}`}
             />
           </div>
         </div>

@@ -5,19 +5,18 @@ const cors = require("cors");
 const app = express();
 const port = 8081;
 
-const corsOptions = {
-  origin: "https://country-info-self.vercel.app", // ← No trailing slash
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true, // Set to true only if you need cookies/auth
-  optionsSuccessStatus: 200, // For legacy browser support
-};
+// const corsOptions = {
+//   origin: "https://country-info-self.vercel.app", // ← No trailing slash
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true, // Set to true only if you need cookies/auth
+//   optionsSuccessStatus: 200, // For legacy browser support
+// };
 
 // Apply CORS globally (recommended)
-app.use(cors(corsOptions));
+app.use(cors());
 
 // If you want to be extra safe, you can also handle preflight manually
-app.options("*", cors(corsOptions));
 
 require("dotenv").config();
 const username = process.env.MYSQL_USERNAME;

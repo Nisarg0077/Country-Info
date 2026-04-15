@@ -2,26 +2,19 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import jsonData from "../convert.json";
 
 export default function Datalist() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const timerRef = useRef(null);
-
+  const constries = jsonData.country;
   // Fetch countries
   useEffect(() => {
-    fetch("https://country-info-vm95.vercel.app/countries")
-      .then((res) => res.json())
-      .then((result) => {
-        setData(result);
-        setFilteredData(result); // Initialize filteredData with all data
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching countries:", err);
-        setLoading(false);
-      });
+    setData(constries);
+    setFilteredData(constries); // Initialize filteredData with all data
+    setLoading(false);
   }, []);
 
   // Cleanup timer on unmount
