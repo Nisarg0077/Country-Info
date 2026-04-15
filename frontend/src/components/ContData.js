@@ -11,7 +11,7 @@ export default function ContData() {
   useEffect(() => {
     if (!code) return;
 
-    fetch(`http://localhost:8081/countries/${code}`)
+    fetch(`https://country-info-vm95.vercel.app/countries/${code}`)
       .then((res) => {
         if (!res.ok) throw new Error("Country not found");
         return res.json();

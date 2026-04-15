@@ -11,7 +11,7 @@ export default function Datalist() {
 
   // Fetch countries
   useEffect(() => {
-    fetch("http://localhost:8081/countries")
+    fetch("https://country-info-vm95.vercel.app/countries")
       .then((res) => res.json())
       .then((result) => {
         setData(result);

@@ -27,7 +27,7 @@ export default function Navbar() {
             alt="Countries Info Logo"
           />
           <span className="text-2xl font-semibold text-white tracking-tighter">
-            Countries Info
+            Country Info
           </span>
         </Link>
 

@@ -9,7 +9,7 @@ export default function Contact() {
         <div className="liquid-glass-card p-12 md:p-16 rounded-3xl">
           <div className="text-center mb-10">
             <h1 className="text-5xl font-bold text-white tracking-tight mb-4">
-              This is Contact Page
+              Contact Us
             </h1>
             <div className="w-24 h-1 bg-white/30 mx-auto rounded-full"></div>
           </div>
